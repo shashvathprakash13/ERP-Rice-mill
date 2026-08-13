@@ -18,7 +18,11 @@ const app = express();
 
 // Middleware
 app.use(express.json());
-js const allowedOrigins = [process.env.FRONTEND_URL || 'http://localhost:5173']; app.use(cors({ origin: (origin, callback) => { if (!origin) return callback(null, true); if (allowedOrigins.includes(origin)) return callback(null, true); return callback(new Error('CORS origin not allowed'), false); }, credentials: true })); 
+js const allowedOrigins = [process.env.FRONTEND_URL || 'http://localhost:5173'];
+app.use(cors({ origin: (origin, callback) => { if (!origin) return callback(null, true); 
+                                              if (allowedOrigins.includes(origin)) return callback(null, true); 
+                                              return callback(new Error('CORS origin not allowed'), false); }, 
+              credentials: true })); 
 
 // Routes
 app.use('/api/auth', require('./routes/auth'));
