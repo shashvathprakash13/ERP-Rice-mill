@@ -18,7 +18,7 @@ const app = express();
 
 // Middleware
 app.use(express.json());
-js let allowedOrigins = [process.env.FRONTEND_URL ];
+let allowedOrigins = [process.env.FRONTEND_URL ];
 app.use(cors({ origin: (origin, callback) => { if (!origin) return callback(null, true); 
                                               if (allowedOrigins.includes(origin)) return callback(null, true); 
                                               return callback(new Error('CORS origin not allowed'), false); }, 
